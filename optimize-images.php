@@ -26,10 +26,17 @@ function recurseImages($dir, &$initialBytes, &$bytesSaved)
                         if (is_dir($current_file)) {
                             $stack[] = $current_file;
                         } else {
-                            $initialBytes += filesize($current_file);
-                            optimizeImage($current_file);
-                            $bytesSaved += filesize($current_file);
-                            $images++;
+                            switch (strtoupper(pathinfo($current_file, PATHINFO_EXTENSION))) {
+								case 'GIF':
+								case 'PNG':
+								case 'JPG':
+								case 'JPEG':                                    
+                                    $initialBytes += filesize($current_file);
+                                    optimizeImage($current_file);
+                                    $bytesSaved += filesize($current_file);
+                                    $images++;
+                                    break;
+                            }
                         }
                     }
                 }
