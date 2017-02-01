@@ -1,0 +1,7 @@
+{
+  "name": "kirchbergernorr/optimize-images",
+  "require": {
+    "ps/image-optimizer": "^1.0"
+  },
+  "bin": ["optimize-images.php"]
+}
